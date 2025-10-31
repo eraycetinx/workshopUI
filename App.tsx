@@ -1,11 +1,9 @@
-import './global.css';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { store } from './src/redux/store';
 import { Provider } from 'react-redux';
 
-import './global.css';
 
 import Navigation from './src/navigation';
 
