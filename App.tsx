@@ -1,21 +1,16 @@
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { store } from './src/redux/store';
 import { Provider } from 'react-redux';
-
 
 import Navigation from './src/navigation';
 
 function App() {
   return (
-    <SafeAreaProvider>
-      <Provider store={store}>
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-      </Provider>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaView style={{flex:1}}>
+        <Navigation />
+      </SafeAreaView>
+    </Provider>
   );
 }
 

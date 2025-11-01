@@ -16,3 +16,5 @@ export interface IloggedUser {
   name: string;
   gender: Gender; // enum define
 }
+
+export type Theme = 'Dark' | 'Light'| '';
