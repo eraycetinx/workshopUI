@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import AsyncStore from '@react-native-async-storage/async-storage';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,8 +8,8 @@ import { setTheme, type State } from '../redux/slices';
 
 // Navigations
 import Auth from './auth';
-import HomeScreen from '../screens/Main/Home';
-
+import Main from './main';
+import { StatusBar } from 'react-native';
 const Stack = createStackNavigator();
 
 const Index = () => {
@@ -26,14 +26,23 @@ const Index = () => {
     })();
   }, [dispatch]);
 
+  const Theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: '#041e33',
+    },
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={Theme}>
+      <StatusBar barStyle={'light-content'} backgroundColor={'#041e33'} />
       <Stack.Navigator
-        initialRouteName={isLogined ? 'Home' : 'Auth'}
+        initialRouteName={!isLogined ? 'Main' : 'Auth'}
         screenOptions={{ headerShown: false, gestureEnabled: false }}
       >
-        {!isLogined && <Stack.Screen name="Auth" component={Auth} />}
-        {isLogined && <Stack.Screen name="Home" component={HomeScreen} />}
+        {isLogined && <Stack.Screen name="Auth" component={Auth} />}
+        {!isLogined && <Stack.Screen name="Main" component={Main} />}
       </Stack.Navigator>
     </NavigationContainer>
   );

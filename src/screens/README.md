@@ -23,3 +23,20 @@ Profile            (Main Navigation folder)
    |- Settings     (file)
 
 ````
+
+### With Style
+If you need a style, you must create a folder. The folder name is screen/component/ui (where you're using it, for example, Home). Since we're writing our main code here, you should use Home.tsx. Our style code should be written as HomeStyle.ts. In short, if a file requires a style, that file name becomes a folder, and two files are created under that folder. One contains the file's own name, and the other contains the code itself, prefixed with "Style" after the file name.
+
+#### For example
+```
+screens
+ |- Home             (folder)
+  |- Home.tsx        (file write code here)
+  |- HomeStyle.ts    (file write style code here)
+
+components
+ |- Header
+   |- Header.tsx     (file, write code here)
+   |- HeaderStyle.ts (file, write style code here)
+
+```
